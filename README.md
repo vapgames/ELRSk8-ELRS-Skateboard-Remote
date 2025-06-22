@@ -17,7 +17,9 @@ Code is based on ELRS control implementation from [Simple TX](https://github.com
 ---
 **Remote config:**
 - ExpressLRS (ELRS) - Currently it is the most reliable opensource link protocol with great interference and failsafe handling. ELRS receivers can be configured as transmitters, and there's a huge selection of different models. You can use any esp8285 based receiver for TX, I recommend "Happymodel ep1 TCXO" as TX and "Happymodel EPW6 TCXO" as RX.
+  
 ![image](https://github.com/user-attachments/assets/2f6a06a7-f4cf-431d-832c-0b5cdd202b7a)
+
 
 - controller: RA4M1 it's compact and setup is straightforward. Alternatively you can use STM32F103C8T6 Blue pill (but you need to flash bootloader and remove pins to make it fit). [Xiao RA4M1](https://wiki.seeedstudio.com/getting_started_xiao_ra4m1/) OR [Waveshare RA4M1](https://www.waveshare.com/wiki/RA4M1-Zero)
 ![image](https://github.com/user-attachments/assets/667876ab-f7f0-4501-8a39-f9daa6081046)
@@ -74,12 +76,11 @@ Code is based on ELRS control implementation from [Simple TX](https://github.com
     
   - m5x4 or m5x4 set screw (same as in HTD5m pulley)
     
-    ![image|150x104](upload://rUrqVHuVqw3NVIbiyQ4EGYz3mia.png)
+    ![image](https://github.com/user-attachments/assets/36841690-e4ca-4169-bd70-ea382588c499)
 
 - Optional WS2812 LEDs
 
-![2025-06-03 11.58.04|690x388](upload://hSF1hISsEsz8UmwUEjcMJhpZgK8.jpeg)
-![2025-06-13 13.44.10|666x500](upload://6brZHJqCgqk7XQYeVsj1nsGHwfI.jpeg)
+
 
 ---
 Receiver
