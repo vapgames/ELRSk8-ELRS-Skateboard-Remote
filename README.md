@@ -13,7 +13,7 @@ Main features I tried to achieve with this project:
 
 Code is based on ELRS control implementation from [Simple TX](https://github.com/kkbin505/Arduino-Transmitter-for-ELRS) by @kkbin505 and [AlfredoCRSF](https://github.com/AlfredoSystems/AlfredoCRSF) library by @AlfredoSystems
 
-I've been riding using this remote for 6 months, so at this point I'm confident enough in this design to share it.
+I've been iterating on this system for over 1 year, and I've been riding using this remote for 6 months. And at this point I'm confident enough in this design to share it.
 This project post is under construction, more instructions and schematics are coming.
 
 
