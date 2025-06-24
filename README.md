@@ -74,7 +74,7 @@ Code is based on ELRS control implementation from [Simple TX](https://github.com
 - Hardware 
   - set of m2 screws 6-12mm
     
-  - m5x4 or m5x4 set screw (same as in HTD5m pulley)
+  - m5x4 or m5x5 set screw (same as in HTD5m pulley)
     
     ![image](https://github.com/user-attachments/assets/36841690-e4ca-4169-bd70-ea382588c499)
 
