@@ -84,7 +84,10 @@ This project post is under construction, more instructions and schematics are co
 
 - Optional WS2812 LEDs
 
-
+---
+Here's remote schematic for XIAO RA4M1 and ND1A05MA
+![schematic1](https://github.com/user-attachments/assets/f2669dd6-1ed2-4d2f-ae5b-18d55915165f)
+![2025-06-13 13 42 58](https://github.com/user-attachments/assets/3f3e439e-055b-4374-a821-cc2aff2158a5)
 
 ---
 Receiver
@@ -93,6 +96,6 @@ Receiver
 - For telemetry - to talk to VESC you need RA4M1 / STM32F103C8T6 . Or any other arduino-compatible controller that can do **2 UARTS!**
 
 ---
-Here's remote schematic for XIAO RA4M1 and ND1A05MA
-![schematic1](https://github.com/user-attachments/assets/f2669dd6-1ed2-4d2f-ae5b-18d55915165f)
-![2025-06-13 13 42 58](https://github.com/user-attachments/assets/3f3e439e-055b-4374-a821-cc2aff2158a5)
+![schematicReceiver1](https://github.com/user-attachments/assets/bee59398-9846-46dc-8a53-ecd2bb32b1dc)
+
+
