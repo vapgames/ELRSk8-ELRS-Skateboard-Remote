@@ -70,6 +70,7 @@ Code is based on ELRS control implementation from [Simple TX](https://github.com
        
      ![image](https://github.com/user-attachments/assets/cc81d290-faf7-4987-a5f2-a1a0bfb038fa)
 
+- 56k resistors x 2. For battery voltage measurement.
 
 - Shell printed with PETG (or any other low friction material). Grips printed with TPU95a.
  
