@@ -87,3 +87,7 @@ Receiver
 - Any ELRS receiver will do. But if you want to have telemetry at this point you'll need a PWM receiver. I use Happymodel EPW6, it can do UART and PWM at the same time.
 
 - For telemetry - same RA4M1 / STM32F103C8T6 to talk to VESC (or any other arduino-compatible controller that can do 2 UARTS)
+
+---
+Here's remote schematic for XIAO RA4M1 and ND1A05MA
+![schematic1](https://github.com/user-attachments/assets/f2669dd6-1ed2-4d2f-ae5b-18d55915165f)
