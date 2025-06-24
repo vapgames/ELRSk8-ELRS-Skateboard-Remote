@@ -25,7 +25,7 @@
   HardwareSerial CRSFSerial(CRSF_RX, CRSF_TX);
  #endif
 
-#ifdef XIAOR4M1 //UART PINS FOR RA4M1 CAN't BE REDEFINED
+#ifdef XIAOR4M1
   #define VESC_RX D11
   #define VESC_TX D12
   #define CRSF_RX D7
