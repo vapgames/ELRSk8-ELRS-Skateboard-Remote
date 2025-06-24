@@ -2,9 +2,11 @@
 ![combinedPhoto1](https://github.com/user-attachments/assets/0495cbe9-f083-4f36-914d-0858318545ef)
 
 ELRSk8 is an open source remote for DIY electric skateboard utilizing the power of ExpressLRS.
+This project post is under construction, i'll post more instructions and schematics.
+
 Main features I tried to achieve with this project:
 
-1. High reliability, low latency connection, better that off the shelf remotes, NRF or BLE protocols. ELRS seems like the best open source link right now with superior interference and failsafe handling.
+1. Solve the connection and safety issue with off the shelf remotes. Low latency connection, better than NRF or BLE protocols. ELRS seems like the best open source link right now with superior interference and failsafe handling.
 2. Durable throttle control with bearings, high reliability sensor and tension adjustment.
 3. Ergonomic grip for use with wrist guards and gloves.
 4. Basic telemetry
@@ -91,3 +93,4 @@ Receiver
 ---
 Here's remote schematic for XIAO RA4M1 and ND1A05MA
 ![schematic1](https://github.com/user-attachments/assets/f2669dd6-1ed2-4d2f-ae5b-18d55915165f)
+![2025-06-13 13 42 58](https://github.com/user-attachments/assets/3f3e439e-055b-4374-a821-cc2aff2158a5)
