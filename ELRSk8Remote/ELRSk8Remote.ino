@@ -23,7 +23,7 @@
   //upload method: hid bootloader 2.2
   #define CRSF_RX PB11
   #define CRSF_TX PB10
-  #define OLED_SDA PB7 //YOU CAN'T CHANGE OLED PINS
+  #define OLED_SDA PB7
   #define OLED_SCL PB6
   #define VOLTAGE_READ_PIN PA6
   #define THROTTLE_PIN PA4
@@ -44,9 +44,9 @@
 #endif
 
 #ifdef XIAOR4M1
-  #define CRSF_RX D7  //YOU CAN'T CHANGE CRSF PINS
+  #define CRSF_RX D7
   #define CRSF_TX D6
-  #define OLED_SDA D4 //YOU CAN'T CHANGE OLED PINS
+  #define OLED_SDA D4
   #define OLED_SCL D5
   #define VOLTAGE_READ_PIN A0
   #define THROTTLE_PIN A1
