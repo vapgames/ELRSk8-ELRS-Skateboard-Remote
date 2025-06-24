@@ -89,6 +89,8 @@ I've been iterating on this system for over 1 year, and I've been riding using t
 Here's remote schematic for XIAO RA4M1 and ND1A05MA
 ![schematic1](https://github.com/user-attachments/assets/f2669dd6-1ed2-4d2f-ae5b-18d55915165f)
 ![2025-06-13 13 42 58](https://github.com/user-attachments/assets/3f3e439e-055b-4374-a821-cc2aff2158a5)
+![2025-05-21 17 16 38](https://github.com/user-attachments/assets/f1d53784-b000-4700-a6d3-c126b6069abe)
+
 
 ---
 Receiver
