@@ -4,7 +4,7 @@
 **This project post is under construction, more instructions and schematics are coming!**
 
 
-ELRSk8 is an open source remote for DIY electric skateboard utilizing the power of ExpressLRS.
+ELRSk8 is an open source remote for DIY electric skateboard utilizing the power of ExpressLRS, running on arduino-compatible controllers.
 
 Main features I tried to achieve with this project:
 
@@ -12,7 +12,7 @@ Main features I tried to achieve with this project:
 2. Durable throttle control with bearings, high reliability sensor and tension adjustment.
 3. Ergonomic grip for use with wrist guards and gloves.
 4. Basic telemetry
-5. Easily sourced components and 3d printed shell.
+5. Easily sourced components, arduino compatible boards, 3d printed shell.
 
 Code is based on ELRS control implementation from [Simple TX](https://github.com/kkbin505/Arduino-Transmitter-for-ELRS) by @kkbin505 and [AlfredoCRSF](https://github.com/AlfredoSystems/AlfredoCRSF) library by @AlfredoSystems
 
