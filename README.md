@@ -99,6 +99,7 @@ Receiver
 - For telemetry - to talk to VESC you need RA4M1 / STM32F103C8T6 . Or any other arduino-compatible controller that can do **2 UARTS!**
 
 ---
-![schematicReceiver1](https://github.com/user-attachments/assets/bee59398-9846-46dc-8a53-ecd2bb32b1dc)
+![schematicReceiver1](https://github.com/user-attachments/assets/391bb1f6-6eb4-4b51-ba57-ddfe61a59739)
+
 
 
