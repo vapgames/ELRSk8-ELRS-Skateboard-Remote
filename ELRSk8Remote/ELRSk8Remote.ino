@@ -3,6 +3,12 @@
 #include "led.h"
 #include "oledScreen.h"
 
+//ELRSk8 Remote - the Express LRS skateboard remote.
+//Developed By Aleksei Abramenko.
+//The software and hardware designs are provided AS IS WITHOUT ANY WARRANTY!
+//Use it at your own risk.
+//I'm not responsible for any damage or accidents caused by proper or improper use and assembly of the device.
+
 //REQUIRED LIBRARIES:
 //U8x8lib
 //Adafruit_NeoPixel
