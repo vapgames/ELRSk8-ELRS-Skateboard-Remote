@@ -32,7 +32,8 @@ I've been iterating on this system for over 1 year, and I've been riding using t
 - Sensor: SS49E or A1324 linear hall sensor.
   
 ![image](https://github.com/user-attachments/assets/a841c091-d416-4ca6-862f-5d14742ad6da)
-
+ 
+- Neodimium magnets 5x3
 
 - Bearings: MR128 ZZ (or MR128 RS)  8 * 12 * 3.5mm
   
