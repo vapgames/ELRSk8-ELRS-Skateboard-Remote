@@ -1,7 +1,7 @@
 # ELRSk8
 ![combinedPhoto1](https://github.com/user-attachments/assets/0495cbe9-f083-4f36-914d-0858318545ef)
 
-**This project post is under construction, more instructions and schematics are coming!**
+**This readme is under construction, more instructions and schematics are coming!**
 
 
 ELRSk8 is an open source remote for DIY electric skateboard utilizing the power of ExpressLRS, running on arduino-compatible controllers.
