@@ -18,8 +18,11 @@ Code is based on ELRS control implementation from [Simple TX](https://github.com
 
 I've been iterating on this system for over 1 year, and I've been riding using this remote for 6 months. And at this point I'm confident enough in this design to share it.
 
----
-**Remote config:**
+
+
+# Remote:
+<details> <summary>Remote parts you'll need (Click to expand)</summary>
+  
 - ExpressLRS (ELRS) - Currently it is the most reliable opensource link protocol with great interference and failsafe handling. ELRS receivers can be configured as transmitters, and there's a huge selection of different models. You can use any esp8285 based receiver for TX, I recommend "Happymodel ep1 TCXO" as TX and "Happymodel EPW6 TCXO" as RX.
   
 ![image](https://github.com/user-attachments/assets/2f6a06a7-f4cf-431d-832c-0b5cdd202b7a)
@@ -85,23 +88,99 @@ I've been iterating on this system for over 1 year, and I've been riding using t
     ![image](https://github.com/user-attachments/assets/36841690-e4ca-4169-bd70-ea382588c499)
 
 - Optional WS2812 LEDs
+</details>
 
----
-Here's remote schematic for XIAO RA4M1 and ND1A05MA
+Remote schematic for XIAO RA4M1 and ND1A05MA
 ![schematic1](https://github.com/user-attachments/assets/f2669dd6-1ed2-4d2f-ae5b-18d55915165f)
 ![2025-06-13 13 42 58](https://github.com/user-attachments/assets/3f3e439e-055b-4374-a821-cc2aff2158a5)
 ![2025-05-21 17 16 38](https://github.com/user-attachments/assets/f1d53784-b000-4700-a6d3-c126b6069abe)
 
 
----
-Receiver
+
+# Receiver:
 - Any ELRS receiver will do. But if you want to have telemetry at this point you'll need a PWM receiver. I use Happymodel EPW6, it can do UART and PWM at the same time.
 
 - For telemetry - to talk to VESC you need RA4M1 / STM32F103C8T6 . Or any other arduino-compatible controller that can do **2 UARTS!**
 
----
 ![schematicReceiver1](https://github.com/user-attachments/assets/391bb1f6-6eb4-4b51-ba57-ddfe61a59739)
 
 
+---
+# ELRS Flashing and configuring
+- <details> <summary>How to enter ELRS WIFI mode (Click to expand)</summary>
+  
+  * For me ELRS WIFI doesn't work on my laptop, but it works on my phone.
+  
+  * By default ELRS receiver/transmitter will go into WIFI mode 60 seconds after power up, if there's no connection.
+  
+  * For fresh receiver you can power it with GND and +5v and wait 60 seconds.
+  
+  * If connection was established between remote and the board receiver, it will not go into WIFI mode until power cycle. So to connect WIFI to your board - keep remote turned off, power the board on, wait 60 seconds.
+  
+  
+  * For soldered remote, the TX module will not go into WIFI mode while it's receiving packets from arduino controller. To go into WIFI mode you need to flash empty sketch (like a blinker sketch) onto the remote, then wait 60 seconds.
+  
+  * Choose WIFI named ExpressLRS RX (or TX). Press "Use network as is":
+    
+     ![image](https://github.com/user-attachments/assets/61f28bab-d0c6-477a-9c94-dc80ef6c00dd)
+  
+  
+  * After this you can go into a browser and type address 10.0.0.1
+  Here you can set your Bind Phrase, tweak pin settings, and upload the firmware (that you download from [web flasher](https://expresslrs.github.io/web-flasher/))
+
+    ![image](https://github.com/user-attachments/assets/0e6a01b5-8cc2-4e8a-9587-3afe17918779) ![image](https://github.com/user-attachments/assets/b1224616-2e5d-4d0c-9835-f61d55d47192)
+</details>
 
 
+- <details> <summary>How to flash Ep1 as TX (Click to expand)</summary>
+  
+  * Go to https://expresslrs.github.io/web-flasher/
+  
+  * Choose Receiver:
+  
+    ![image](https://github.com/user-attachments/assets/65ffad33-0fa8-479d-b1d7-3a2ba975e44e)
+
+  * Choose latest ELRS and these receiver settings:
+  
+    ![image](https://github.com/user-attachments/assets/274a7e57-05c3-4544-aa0c-65c2035afa71)
+
+  * Set your bind phrase, go to Advanced Settings and check "Flash RX as TX"
+  
+    ![image](https://github.com/user-attachments/assets/f9781d08-f73f-4233-a813-7e142f5eb5c4)
+
+  * Download firmware and flash using WIFI method OR serial FTDI adapter
+  
+</details>
+
+
+- <details> <summary>How to configure EPW6 for PPM and UART telemetry (Click to expand)</summary>
+  
+  * Go into receiver WIFI mode
+    
+  * CH1 is throttle PWM, I've increased mine to 100HZ, test this for your particular VESC. Make sure to setup **failsafe pos to 1500**.
+    
+  * CH2 and CH3 should be Serial TX and RX.
+  
+    ![image](https://github.com/user-attachments/assets/0f130994-d8fe-4521-87ea-21b3da6e2d6c)
+
+</details>
+
+- <details> <summary>How to flash with FTDI adapter (Click to expand)</summary>
+  
+  * The "I wasn't asking" method that I prefer over WIFI flashing.
+  
+  * Bridge the boot pin or press the boot button before powering up before flashing.
+  
+    ![FTDIFlashing1](https://github.com/user-attachments/assets/e84fd2e5-6c49-4356-8602-25ea1d0dfa93)
+
+  
+  * Use flashing method "Serial UART"
+  
+    ![image](https://github.com/user-attachments/assets/39008df4-8217-4b54-8c27-283a78eb0d7c)
+
+  
+  * Select your FTDI serial in popup
+
+    ![image](https://github.com/user-attachments/assets/48ea31e2-5f47-4bd7-9a66-969f36361ed4)
+
+</details>
