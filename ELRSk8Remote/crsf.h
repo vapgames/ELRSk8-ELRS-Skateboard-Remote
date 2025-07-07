@@ -4,7 +4,6 @@
 
 #include <Arduino.h>
 #include <stdint.h>
-#include "crc8.h"
 
 /*
  * This file is part of Simple TX
