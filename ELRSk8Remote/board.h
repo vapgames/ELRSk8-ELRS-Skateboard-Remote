@@ -33,8 +33,8 @@
   #define MENU_BUTTON1_PIN A2
   #define RGBLED_PIN D9
   #define ADCResolution 14
-  #define SERIAL_RX D7
-  #define SERIAL_TX D6
+  #define SERIAL_RX D7    // problem here with these pins ...
+  #define SERIAL_TX D6   // problem here with these pins ...
 
 #else // abort, compilation not set to a supported board
   #error specify the BOARD in userCFG.h to a supported board.  Or, setup a new board and its pins correctly 

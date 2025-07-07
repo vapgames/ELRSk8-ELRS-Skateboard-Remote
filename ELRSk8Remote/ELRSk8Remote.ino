@@ -1,12 +1,13 @@
 /*******************************************************
- *  ELRSk8 Remote - the Express LRS skateboard remote.
+ *  ELRSK8 Remote - the Express LRS skateboard remote.
  *
  * Developed By Aleksei Abramenko.
  * The software and hardware designs are provided AS IS WITHOUT ANY WARRANTY!
  * GPL Licensed, see LICENSE
  *
  * Use it at your own risk.
- * I'm not responsible for any damage or accidents caused by proper or improper use and assembly of the device.
+ * I'm not responsible for any damage or accidents caused by proper or improper
+ *  use or assembly of the device.
  *********************************************************/
 
 #include <stdint.h>
@@ -77,8 +78,10 @@ void setup()
   }
   //START CRSF Communications
   delay(100);
-  CRSFSerial.begin(CRSF_SERIAL_BAUDRATE, SERIAL_8N1);
+  CRSFSerial.begin(CRSF_SERIAL_BAUDRATE);
   crsf.begin(CRSFSerial, SERIAL_8N1);
+  while (!CRSFSerial) { ; } // wait for this serial port to connect.
+
   crsfTime = micros();
   
   // SERIAL SETUP - DEBUG
