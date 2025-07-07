@@ -7,8 +7,7 @@ uint8_t ledState = LOW;
 uint8_t oldState = HIGH;
 unsigned long previousMillis = 0;
 
-Adafruit_NeoPixel pixels(1, D1, NEO_GRB + NEO_KHZ800);
-
+Adafruit_NeoPixel pixels(1, RGBLED_PIN, NEO_GRB + NEO_KHZ800);
 
 struct RGB {
   byte r; // Red (0 to 255)

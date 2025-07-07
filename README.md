@@ -184,3 +184,44 @@ Remote schematic for XIAO RA4M1 and ND1A05MA
     ![image](https://github.com/user-attachments/assets/48ea31e2-5f47-4bd7-9a66-969f36361ed4)
 
 </details>
+
+## Arduino Development Setup
+
+
+## Libraries
+Requires Adafruit NeoPixel@1.15.1
+
+Open the Arduino IDE:
+
+Open Library Manager: Go to Sketch > Include Library > Manage Libraries. 
+
+Search for the library: In the Library Manager, type "Adafruit NeoPixel" into the search bar. 
+
+Install the library: Select "Adafruit NeoPixel by Adafruit" from the search results and click the "Install" button. 
+
+Include the library in your sketch
+
+
+Requires: U8g2@2.35.30
+
+Open the Arduino IDE:
+
+Open Library Manager: Go to Sketch > Include Library > Manage Libraries. 
+
+Search for the library: In the Library Manager, type "U8g2"
+
+further details : 
+
+## Board Selection
+
+
+Open the Arduino IDE:
+
+Board Manager - select Arduino UNO R4 Boards [ v 1.4.1]
+
+
+## Hardware
+
+See reference documentation for [Remote](./ELRSk8Remote/HardwareDocumentation/)
+
+[KiCAD Footprint](https://github.com/Seeed-Studio/OPL_Kicad_Library/tree/master/Seeed%20Studio%20XIAO%20Series%20Library)

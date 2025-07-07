@@ -1,6 +1,4 @@
 
-
-
 /*
  * This file is part of Simple TX
  *
@@ -48,6 +46,7 @@
  */
 
 #include "crsf.h"
+#include <stdint.h>
 
 
 // crc implementation from CRSF protocol document rev7

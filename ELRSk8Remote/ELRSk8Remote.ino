@@ -1,88 +1,25 @@
-#include <Arduino.h>
+/*******************************************************
+ *  ELRSk8 Remote - the Express LRS skateboard remote.
+ *
+ * Developed By Aleksei Abramenko.
+ * The software and hardware designs are provided AS IS WITHOUT ANY WARRANTY!
+ * GPL Licensed, see LICENSE
+ *
+ * Use it at your own risk.
+ * I'm not responsible for any damage or accidents caused by proper or improper use and assembly of the device.
+ *********************************************************/
+
+#include <stdint.h>
+#include <HardwareSerial.h>
+#include "userCfg.h"
+#include "board.h"
 #include "crsf.h"
 #include "led.h"
 #include "oledScreen.h"
 
-//ELRSk8 Remote - the Express LRS skateboard remote.
-//Developed By Aleksei Abramenko.
-//The software and hardware designs are provided AS IS WITHOUT ANY WARRANTY!
-//Use it at your own risk.
-//I'm not responsible for any damage or accidents caused by proper or improper use and assembly of the device.
-
-//REQUIRED LIBRARIES:
-//U8x8lib
-//Adafruit_NeoPixel
-
-//CONFIG////////////////////////////
-
-//#define CALIBRATION
-
-//#define STM32F103C8
-#define XIAOR4M1
-
-//PINS
-#ifdef STM32F103C8
-  //board: generic stm32f1
-  //bluepillf103c8
-  //USART support: enabled (generic serial)
-  //USB: CDC generic serial
-  //upload method: hid bootloader 2.2
-  #define CRSF_RX PB11
-  #define CRSF_TX PB10
-  #define OLED_SDA PB7
-  #define OLED_SCL PB6
-  #define VOLTAGE_READ_PIN PA6
-  #define THROTTLE_PIN PA4
-  #define MENU_BUTTON1_PIN PB4
-  #define RGBLED_PIN PA8
-  HardwareSerial CRSFSerial(CRSF_RX, CRSF_TX);
-  #define CRSF_SERIAL_BAUDRATE  400000
-  #define ADCResolution 12
- 
-  int throttleLow = 670;
-  int throttleMid = 2165;
-  int throttleHigh = 3650;
-  
-  float batteryRealVoltageLow = 3.84f;
-  float batteryRealVoltageHigh = 4.2f;
-  float batteryADCLow = 2341.0f;
-  float batteryADCHigh = 2540.0f;
-#endif
-
-#ifdef XIAOR4M1
-  #define CRSF_RX D7
-  #define CRSF_TX D6
-  #define OLED_SDA D4
-  #define OLED_SCL D5
-  #define VOLTAGE_READ_PIN A0
-  #define THROTTLE_PIN A1
-  #define MENU_BUTTON1_PIN A2
-  #define RGBLED_PIN D9
-  #define CRSFSerial Serial1
-  #define CRSF_SERIAL_BAUDRATE  400000
-  #define ADCResolution 14
-  
-  int throttleLow = 4950;
-  int throttleMid = 8320;
-  int throttleHigh = 11650;
-
-  float batteryRealVoltageLow = 3.82f;
-  float batteryRealVoltageHigh = 4.2f;
-  float batteryADCLow = 9780.0f;
-  float batteryADCHigh = 10460.0f;
-#endif
-
-int throttleSamples = 1;    //YOU CAN TRY MULTISAMPLING FOR THROTTLE INPUT IF YOU THINK IT'S TOO NOISY
-
-int ELRSpacketRate = 3;     // 0 - 50Hz / 1 - 100Hz Full / 2- 150Hz / 3 - 250Hz / 4 - 333Hz Full / 5 - 500Hz
-int ELRSpower = 0;          // 0 - 10mW / 1 - 25mW / 2 - 50mW /3 - 100mW
-int ELRStelemetryRate = 4;  // 0 - Std / 1 - Off / 2 - 1:128 / 3 - 1:64 / 4 - 1:32 / 5 - 1:16 / 6 - 1:8 / 7 - 1:4 / 8 - 1:2 / 9 - Race
-
-#define KILOMETERS
-//#define MILES
-
-//END CONFIG////////////////////////
-
+// CRSF Setup
+HardwareSerial CRSFSerial(CRSF_RX, CRSF_TX);
+#define CRSF_SERIAL_BAUDRATE  400000
 
 CRSF crsf;
 uint8_t crsfPacket[CRSF_PACKET_SIZE];
@@ -101,9 +38,19 @@ void setup()
   analogReadResolution(ADCResolution);
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(VOLTAGE_READ_PIN, INPUT);
-  //TURN OFF LED TO SAVE POWER
-  digitalWrite(LED_BUILTIN, HIGH); //INVERTED ON STM32f103
   
+  // Disable LED on the Dev Board to save power, configurable
+  if ( onBoardLEDDisable )
+  {
+    #if BOARD == BOARD_XIAOR4M1
+      digitalWrite(LED_BUILTIN, HIGH);
+    #elif BOARD == BOARD_STM32F103C8
+      digitalWrite(LED_BUILTIN, LOW);
+    #else
+      #error Specify the PIN and behavior for this board's onboard LED.
+    #endif    
+  }
+
   //OLED
   int screenMode = SCREEN_VOLTAGE_DISTANCE;
   bool useKilometers = true;
@@ -116,7 +63,7 @@ void setup()
   
   oledScreen.Setup(MENU_BUTTON1_PIN, screenMode, useKilometers);
   
-  //DRAW SCREEN
+  //Draw Initial screen
   for (uint8_t i = 0; i < screenTextWidth * screenTextHeight; i++) {
     oledScreen.Update();
   }
@@ -124,31 +71,31 @@ void setup()
   //LED
   SetupLED(RGBLED_PIN);
 
-  //CRSF
-  //SET CHANNELS
+  //CRSF SET CHANNELS
   for (uint8_t i = 0; i < CRSF_MAX_CHANNEL; i++) {
       rcChannels[i] = (CRSF_DIGITAL_CHANNEL_MIN + CRSF_DIGITAL_CHANNEL_MAX) / 2;
   }
-  //START CRSF
+  //START CRSF Communications
   delay(100);
-  CRSFSerial.begin(CRSF_SERIAL_BAUDRATE);
-  crsf.begin(CRSFSerial);
+  CRSFSerial.begin(CRSF_SERIAL_BAUDRATE, SERIAL_8N1);
+  crsf.begin(CRSFSerial, SERIAL_8N1);
   crsfTime = micros();
   
-  //DEBUG
-  Serial.begin(115200);
-  
+  // SERIAL SETUP - DEBUG
+  Serial.begin(115200,SERIAL_8N1);
+  while (!Serial) { ; } // wait for serial port to connect.
+
   #ifdef CALIBRATION
-    throttleMid = SampleThrottle(100);
+    throttleMid = avgThrottle(100);
     throttleLow = throttleMid;
     throttleHigh = throttleMid;
   #endif
 }
 
-float SampleThrottle(int samples) {
+float avgThrottle(int samples) {
   float potInput = 0;
   for(int i = 0;i < samples;++i) {
-  potInput += (float)analogRead(THROTTLE_PIN);
+    potInput += (float)analogRead(THROTTLE_PIN);
   }
   potInput /= samples;
   return potInput;
@@ -181,14 +128,13 @@ float clamp(float x, float xMin, float xMax)
 }
 
 
-
 bool CRSFUpdate() {
   unsigned long currentMicros = micros();
   //INPUT+CRSF - 635us
   if (currentMicros - crsfTime > CRSF_TIME_BETWEEN_FRAMES_US) {
     //Serial.println(currentMicros - crsfTime); //PERFORMANCE CHECK, should be close to 4000 usec
     //THROTTLE INPUT
-    float potInput = SampleThrottle(throttleSamples);
+    float potInput = avgThrottle(throttleSamples);
     
     int CRSFThrottle = CRSFMid;
     if(potInput < throttleMid) {
@@ -206,7 +152,6 @@ bool CRSFUpdate() {
     
     throttle =  mapfloat(potInput, throttleLow, throttleHigh, -1.0f, 1.0f);
     
-
     //SEND
     if (loopCount <= 500) {
         //ESTABLISH CONNECTION BY SENDING NORMAL PACKETS
@@ -302,7 +247,6 @@ void loop()
         packetsPerSecond = 0;
       }
     }
-    
     
     if(!crsfUpdated) {
       //RECEIVE TELEMETRY
