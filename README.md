@@ -24,7 +24,8 @@ I've been iterating on this system for over 1 year, and I've been riding using t
 <details> <summary>Remote parts you'll need (Click to expand)</summary>
   
 - ExpressLRS (ELRS) - Currently it is the most reliable opensource link protocol with great interference and failsafe handling. ELRS receivers can be configured as transmitters, and there's a huge selection of different models. You can use any esp8285 based receiver for TX, I recommend "Happymodel ep1 TCXO" as TX and "Happymodel EPW6 TCXO" as RX.
-  
+
+
 ![image](https://github.com/user-attachments/assets/2f6a06a7-f4cf-431d-832c-0b5cdd202b7a)
 
 
@@ -36,35 +37,40 @@ I've been iterating on this system for over 1 year, and I've been riding using t
   
 ![image](https://github.com/user-attachments/assets/a841c091-d416-4ca6-862f-5d14742ad6da)
  
-- Neodimium magnets 5x3
+- Neodymium magnets 5x3mm
 
 - Bearings: MR128 ZZ (or MR128 RS)  8 * 12 * 3.5mm
   
 ![image](https://github.com/user-attachments/assets/28e9f44e-3933-425b-847e-37416a9172b8)
 
-- Spring from Bic lighter.
+- Spring from Bic lighter. (refer to https://www.amazon.com/Dianrui-Compression-Assortment-Mechanical-K-P-051-300/dp/B0BVTDP29W)
 
 - Battery: 802540 or 902540 900mah li-ion spicy pillow (lasts >6 hours, haven't tested beyond that)
 
 ![image](https://github.com/user-attachments/assets/aee778e6-1d69-49d4-b16d-e391b49c1871)
 
 
-- Usb C port: generic pcb soldered 4 pin port.
+- Usb C Breakout board: generic pcb soldered 4 pin port.
   
 ![image](https://github.com/user-attachments/assets/b5586c1c-5f05-47c0-8872-ac2bea37eca7)
+Reference - https://www.adafruit.com/product/5180?gQT=1
+alternate buy link : https://www.aliexpress.com/item/1005006874202077.html?spm=a2g0o.order_list.order_list_main.16.468f1802kvAtT7
 
 
 - 6x6x7 button for telemetry menu
+Reference - 6x6x8mm - https://www.digikey.com/en/products/detail/schurter-inc/1301-9318-24/9094776
   
 ![image](https://github.com/user-attachments/assets/dbcb2181-2e78-4173-9e72-a6c209cf87b7)
 
-- Power switch: KCD1-110
-  
+- Power switch (rocker): KCD1-110 or RD1113112R
 ![image](https://github.com/user-attachments/assets/1b7bd9e6-8d7a-4733-ac7c-d268f51610c8)
+Reference: https://www.digikey.com/en/products/detail/e-switch/RD1113112R/3778106
+ALternate buy link: https://www.aliexpress.com/item/10000283884796.html?spm=a2g0o.order_list.order_list_main.43.468f1802kvAtT7
 
 - OLED 0.49" i2c 64x32
   
 ![image](https://github.com/user-attachments/assets/534a824a-699a-426f-b127-3648d601702b)
+Reference: https://www.waveshare.com/0.49inch-oled-module.htm
 
 - Power supply:
 
