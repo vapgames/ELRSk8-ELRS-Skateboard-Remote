@@ -1,9 +1,9 @@
 #ifndef CRSF_H
 #define CRSF_H
 
-
 #include <Arduino.h>
 #include <stdint.h>
+//#include "crc8.h"
 
 /*
  * This file is part of Simple TX
@@ -25,8 +25,12 @@
 // Basic setup
 #define CRSF_MAX_CHANNEL        16
 #define CRSF_FRAME_SIZE_MAX     64
-// Device address & type
+
+// Device address & type, default here
+#ifndef RADIO_ADDRESS
 #define RADIO_ADDRESS           0xEA
+#endif
+
 // #define ADDR_MODULE             0xEE  //  Crossfire transmitter
 #define TYPE_CHANNELS           0x16
 

@@ -1,7 +1,5 @@
 
-
-
-/*
+/****************************************
  * This file is part of Simple TX
  *
  * Simple TX is free software: you can redistribute it and/or modify
@@ -17,8 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Cleanflight.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
- =======================================================================================================
+
+/***********************************************************************
  * CRSF protocol
  *
  * CRSF protocol uses a single wire half duplex uart connection.
@@ -45,9 +43,10 @@
  * Type:           (uint8_t)
  * CRC:            (uint8_t)
  *
- */
+ ***********************************************************************/
 
 #include "crsf.h"
+#include <stdint.h>
 
 
 // crc implementation from CRSF protocol document rev7
